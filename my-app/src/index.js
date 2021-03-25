@@ -1,11 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from './react/react';
+import ReactDOM from './react-dom/react-dom';
 
 ReactDOM.render(
   <div id="abc">
-  <p>这是一个P标签</p>
-</div>  ,
+    <p>这是一个P标签</p>
+  </div>,
   document.getElementById('root')
 );
