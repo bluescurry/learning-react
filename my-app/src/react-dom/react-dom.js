@@ -8,6 +8,7 @@ let HostText = 'HostText'; // 标识原生文本类型
 let FunctionComponent = 'FunctionComponent'; // 标识函数组件类型
 
 // Fiber effectTag 属性的可选值
+let NoWork = 'NoWork'; // 标识没有任何工作
 let Placement = 'Placement'; // 标识这个节点是新插入的
 let Update = 'Update'; // 标识这个节点有更新
 let Deletion = 'Deletion'; // 标识这个节点会被删除
@@ -26,7 +27,15 @@ class FiberNode {
     this.memoizedState = null; // 标识当前 fiber 的 state
     this.memoizedProps = null; // 标识当前 fiber 的 props
     this.pendingProps = pendingProps; // 标识新传入的 props
-    this.effectTag = null; // 标识当前节点要进行何种更新
+    this.effectTag = NoWork; // 标识当前节点要进行何种更新
+    this.firstEffect = null; // 标识当前节点的有更新的第一个子节点
+    this.lastEffect = null; // 标识当前节点的有更新的最后一个子节点
+    this.nextEffect = null; // 标识下一个要更新的子节点
+
+    this.alternate = null; // 用来连接 current 和 workInProgress 的
+    this.updateQueue = null; // 一条链表，上面挂载的是当前 fiber 的新的状态
+    // 其实还有很多其他属性
+    // expirationTime: 0
   }
 }
 
