@@ -39,8 +39,8 @@ class FiberNode {
   }
 }
 
-function createFiber() {
-  return new FiberNode();
+function createFiber(tag, key, pendingProps) {
+  return new FiberNode(tag, key, pendingProps);
 }
 
 class ReactRoot {
@@ -49,7 +49,7 @@ class ReactRoot {
   }
 
   _createRoot(container) {
-    let uninitialFiber = this._createUnitialFiber();
+    let uninitialFiber = this._createUnitialFiber(HostRoot, null, null);
     
     let root = {
       container,
@@ -60,8 +60,8 @@ class ReactRoot {
     return root;
   }
 
-  _createUnitialFiber() {
-    return createFiber();
+  _createUnitialFiber(tag, key, pendingProps) {
+    return createFiber(tag, key, pendingProps);
   }
 }
 
