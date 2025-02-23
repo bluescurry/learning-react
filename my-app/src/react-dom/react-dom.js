@@ -53,9 +53,11 @@ class ReactRoot {
     
     let root = {
       container,
-      current: null,      // 指向 current 树
+      current: uninitialFiber,      // 指向 current 树
       finishedWork: null, // 指向 workInProgress 树
     };
+
+    uninitialFiber.stateNode = root;
 
     return root;
   }
